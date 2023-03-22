@@ -1,2 +1,1 @@
-# ReactNative-1
-BookApp
+# Event-App
