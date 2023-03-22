@@ -1,16 +1,14 @@
 /* eslint-disable prettier/prettier */
 import React from 'react';
-import {StyleSheet, Text, View, Image} from 'react-native';
-import {NavigationContainer} from '@react-navigation/native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import { StyleSheet, Text, View, Image } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 //Screens
 import HomePage from '../Screens/Home/HomePage';
 import Books from '../Screens/Home/Books';
 import Favorites from '../Screens/Home/Favorites';
 
-
-//Icon import
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 const Stack = createNativeStackNavigator();
@@ -22,8 +20,8 @@ function Home() {
   return (
     <>
       <Tab.Navigator
-        screenOptions={({route}) => ({
-          tabBarIcon: ({focused, color, size}) => {
+        screenOptions={({ route }) => ({
+          tabBarIcon: ({ focused, color, size }) => {
             let iconName;
             if (route.name === 'Home Page') {
               iconName = focused ? 'home-sharp' : 'home-outline';
@@ -34,7 +32,7 @@ function Home() {
                 ? 'person-circle-outline'
                 : 'person-circle-sharp';
             }
-            // You can return any component that you like here!
+
             return <Ionicons name={iconName} size={size} color={color} />;
           },
           headerTitle: '',

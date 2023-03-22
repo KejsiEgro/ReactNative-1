@@ -47,7 +47,17 @@ const BookDetails = styled.Text`
 const NoFavorites = styled.Text`
   font-size: 18px;
   text-align: center;
+  color: #535353;
 `;
+
+const Remove = styled.Text`
+font-size: 18px;
+color: red;
+align-self: flex-start;
+margin-top: 30px
+`;
+
+
 
 const Favorites = () => {
 
@@ -66,7 +76,7 @@ const Favorites = () => {
         <BookTitle>{item?.title}</BookTitle>
         <BookDetails>{item?.genre} | {item?.publishingDate}</BookDetails>
         <TouchableOpacity onPress={() => removeBookFromFavorites(item.title)}>
-          <Text>Remove from favorites</Text>
+          <Remove>Remove from favorites</Remove>
         </TouchableOpacity>
       </BookInfo>
     </Book>

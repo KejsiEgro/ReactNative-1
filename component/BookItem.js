@@ -41,8 +41,13 @@ const BookTitle = styled.Text`
 const BookAuthor = styled.Text`
   font-size: 16px;
   color: #666;
+  font-weight: 700;
   margin-bottom: 5px;
 `;
+
+const DetailsText = styled.Text`
+color: #535353;
+ `;
 
 const BookItem = ({ book, onPress }) => (
   <BookItemContainer onPress={onPress}>
@@ -50,12 +55,12 @@ const BookItem = ({ book, onPress }) => (
     <BookDetails>
       <BookTitle>{book.title}</BookTitle>
       <BookAuthor>{book.author}</BookAuthor>
-      <Text>
+      <DetailsText>
         Rate:
         {book.rate}
-      </Text>
-      <Text>Genre: {book.genre}</Text>
-      <Text>Publishing Date: {book.publishing_date}</Text>
+      </DetailsText>
+      <DetailsText>Genre: {book.genre}</DetailsText>
+      <DetailsText>Publishing Date: {book.publishing_date}</DetailsText>
     </BookDetails>
   </BookItemContainer>
 );

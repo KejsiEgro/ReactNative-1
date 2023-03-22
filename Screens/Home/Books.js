@@ -1,20 +1,12 @@
 /* eslint-disable prettier/prettier */
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   FlatList,
-  Text,
-  Image,
-  Modal,
-  View,
-  TouchableOpacity,
-  TextInput,
-  ScrollView,
-  Share,
+  Text
 } from 'react-native';
 import styled from 'styled-components/native';
 import axios from 'axios';
-import SharedDataContext from "../../contexts/SharedDataContext";
-import { ToastAndroid } from 'react-native';
+
 import BookItem from './../../component/BookItem';
 import BookModal from './../../component/BookModal';
 
@@ -24,75 +16,22 @@ const Container = styled.View`
   background-color: #f7f7f7;
 `;
 
-const BookImage = styled.Image`
-  width: 80px;
-  height: 120px;
-  margin-right: 15px;
+const SearchInput = styled.TextInput.attrs({
+  placeholderTextColor: "#bbb"
+})`
+  margin: 20px;
+  padding: 10px;
   border-radius: 5px;
+  color: black;
+  border: 1px solid #bbb;
 `;
 
-const BookDetails = styled.View`
-  flex: 1;
-`;
 
-const BookTitle = styled.Text`
-  font-size: 18px;
-  font-weight: bold;
-  margin-bottom: 5px;
-`;
-
-const BookAuthor = styled.Text`
-  font-size: 16px;
-  color: #666;
-  margin-bottom: 5px;
-`;
-
-const ModalContainer = styled.View`
-  flex: 1;
-  justify-content: center;
-  align-items: center;
-`;
-
-const ModalContent = styled.ScrollView`
-  background-color: #fff;
-  elevation: 4;
-  padding: 20px 20px 0px 20px;
-`;
-
-const ModalTitle = styled.Text`
-  font-size: 32px;
-  font-weight: bold;
-  margin-bottom: 10px;
-`;
-
-const ModalImage = styled.Image`
-  width: 100%;
-  height: 400px;
-  margin-bottom: 10px;
-  border-radius: 10px;
-  align-self: center;
-`;
-
-const ModalText = styled.Text`
-  font-size: 16px;
-  line-height: 24px;
-  margin-bottom: 10px;
-`;
-
-const ModalClose = styled.Text`
-  font-size: 22px;
-  align-items: center;
-  margin-bottom: 30px;
-  padding: 10px 20px;
-  background-color: #ddd;
-  border-radius: 5px;
-  overflow: hidden;
-  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.15);
-`;
-
-const Bold = styled.Text`
-  font-weight: bold;
-`;
+const NoBooksText = styled.Text`
+text-align: center;
+margin-top: 20px;
+color: black;
+`
 
 const BookList = () => {
   const [books, setBooks] = useState([]);
@@ -135,19 +74,13 @@ const BookList = () => {
 
   return (
     <Container>
-      <TextInput
+      <SearchInput
         placeholder="Search by title"
         value={searchQuery}
-        style={{
-          margin: 20,
-          padding: 10,
-          backgroundColor: '#fff',
-          borderRadius: 5,
-        }}
         onChangeText={query => searchBooks(query)}
       />
       {fiberedBooks.length === 0 ?
-        <Text style={{ textAlign: 'center', marginTop: 20 }}>No books found</Text>
+        <NoBooksText>No books found</NoBooksText>
         :
         <FlatList
           data={fiberedBooks}

@@ -43,6 +43,7 @@ const ModalText = styled.Text`
   font-size: 16px;
   line-height: 24px;
   margin-bottom: 10px;
+  color: #535353;
 `;
 
 const ModalClose = styled.Text`
